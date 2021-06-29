@@ -1,4 +1,4 @@
-/*
+/*maniac
 ------------------------------- SASBA DRUM v1.3 ----------------------------------
 ~o~ Application Name : Sasba~Realdrum
 ~o~ Author Name      : Dedi sasba
