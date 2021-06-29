@@ -175,13 +175,15 @@ body {
 
 .tom3 {
 	margin-top: 70px;
-	margin-left: 48%;
+	margin-left: 25%;
 	width: 180px;
 	height: 180px;
 }
 
 .crash {
-	margin-left: 27%;
+	/*margin-left: 370px;*/
+	margin-left : 27%;
+	margin-top: -90px;
 	display: flex;
 	position: relative;
 	z-index: 2;
@@ -207,8 +209,8 @@ body {
 
 .crash1 {
 	z-index: 1;
-	margin-left: 20px;
-	margin-top: 140px;
+	margin-left: 18px;
+	margin-top: 150px;
 	width: 150px;
 	height: 150px;
 }
