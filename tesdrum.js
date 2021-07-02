@@ -1,20 +1,10 @@
-/*maniac
+/*
 ------------------------------- SASBA DRUM v1.3 ----------------------------------
 ~o~ Application Name : Sasba~Realdrum
 ~o~ Author Name      : Dedi sasba
 ~o~ Date Create      : 18-04-2020
 ----------------------------------------------------------------------------------
 */
-	// function getData(audiofile, callback){
-	// 	let reader = new FileReader();
-	// 	reader.onload = function(e){
-	// 		let data = e.target.result.split(','), decodeImageData = btoa[data[1]];
-	// 		callback(decodeImageData);
-	// 	}
-	// 	reader.readAsDataURL(audiofile);
-	// }
-
-
 
 (function(doc, wd) {
 	'use strict';
