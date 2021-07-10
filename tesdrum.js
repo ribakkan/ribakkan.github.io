@@ -17,7 +17,7 @@
 			mp.src = 'mp3/' + src
 			mp.preload = 'auto'
 			mp.currentTime = 0;
-			// mp.load()
+			/// mp.load()
 			res(mp)
 			rej(console.log(mp))
 		})
