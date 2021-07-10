@@ -56,7 +56,7 @@
 		img.style = '-webkit-transform:scale(1.06);transform:scale(1.06);box-shadow:0px 1px 9px #1C1C1C;'
 		setTimeout(()=>img.style = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;',60)
 	}
-
+	
 	async function playDrum(e){
 		let drum = drumset[e.key]
 		if(typeof drum === 'undefined' || e.altKey === true) return;
@@ -67,27 +67,27 @@
 		if(drum.triplet) {
 			setTimeout(async ()=> {
 				mp.currentTime = 0
-				await mp.play()
+				mp.play()
 			}, 70)
 		}
 		imgFade(drum.img)
-		await mp.play()
+		mp.play()
 		return mp.remove()
 	}
 	doc.addEventListener("keydown", playDrum)
 
-   ell("#drum-ring").forEach(function(img) {
-   	img.addEventListener("click", async function(im) {
+   ell("#drum-ring").forEach( img=> {
+   	img.addEventListener("click", async im => {
    		im.stopPropagation();
    		let tmp
-         Object.entries(drumset).forEach(ds=> {
+         Object.entries(drumset).forEach( ds=> {
          	let set_mp = drumset[ds[0]]
          	if (el(set_mp.img) == this) tmp = set_mp
          })
          let mp = await makeAudio(tmp.name);
          mp.currentTime = 0
          imgFade(tmp.img)
-         await mp.play()
+         mp.play()
       })
    })
 
