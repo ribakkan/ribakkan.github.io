@@ -19,7 +19,7 @@
 			mp.currentTime = 0;
 			// mp.load()
 			res(mp)
-			rej(mp)
+			rej(console.log(mp))
 		})
 	}
 
@@ -56,7 +56,7 @@
 		img.style = '-webkit-transform:scale(1.06);transform:scale(1.06);box-shadow:0px 1px 9px #1C1C1C;'
 		setTimeout(()=>img.style = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;',60)
 	}
-	
+
 	async function playDrum(e){
 		let drum = drumset[e.key]
 		if(typeof drum === 'undefined' || e.altKey === true) return;
