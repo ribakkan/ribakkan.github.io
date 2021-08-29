@@ -13,14 +13,17 @@
 
 	function makeAudio(src){ 
 		let mp = new wd.Audio()
-		return new Promise((res,rej)=>{
-			mp.src = 'mp3/' + src
-			mp.preload = 'auto'
-			mp.currentTime = 0;
-			/// mp.load()
-			res(mp)
-			rej(console.log(mp))
-		})
+		// return new Promise((res,rej)=>{
+		// 	mp.src = 'mp3/' + src
+		// 	mp.preload = 'auto'
+		// 	mp.currentTime = 0;
+		// 	mp.load()
+		// 	res(mp)
+		// })
+		mp.src = 'mp3/' + src
+		mp.preload = 'auto'
+		mp.currentTime = 0;
+		return mp
 	}
 
 	const drumset = {
@@ -29,26 +32,26 @@
 		a: { img:'.hh-close', type:'crash', vol:0.6, name:'hh-close.mp3' },
 		h: { img:'.hh-close', type:'crash', vol:0.6, name:'hh-close.mp3' },
 		k: { img:'.hh-close-right', type:'crash', vol:0.6, name:'hh-close.mp3' },
-		n: { img:'.hh-close', type:'crash', vol:0.5, semiopen: 320, name:'hh-open.mp3' },
-		s: { img:'.hh-close', type:'crash', vol:0.6, name:'hh-open.mp3' },
-		j: { img:'.hh-close', type:'crash', vol:0.6, name:'hh-open.mp3' },
-		f: { img:'.splash', type:'crash', vol:0.7, name:'splash2.mp3' },
+		n: { img:'.hh-close', type:'crash', vol:0.5, semiopen: 320, name:'hh-open.ogg' },
+		s: { img:'.hh-close', type:'crash', vol:0.6, name:'hh-open.ogg' },
+		j: { img:'.hh-close', type:'crash', vol:0.6, name:'hh-open.ogg' },
+		f: { img:'.splash', type:'crash', vol:0.7, name:'splash2.ogg' },
 		x: { img:'.k-snare', type:'drum', vol:0.3, rate:2, triplet:true, name:'snare4.mp3' },
 		v: { img:'.k-snare', type:'drum', vol:0.3, rate:2, triplet:true, name:'snare4.mp3' },
-		c: { img:'.k-snare', type:'drum', vol:0.6, name:'rim2.mp3' },
+		c: { img:'.k-snare', type:'drum', vol:0.6, name:'rim2.ogg' },
 		d: { img:'.k-snare', type:'drum', vol:0.8, name:'snare4.mp3' },
 		g: { img:'.k-snare', type:'drum', vol:0.8, name:'snare4.mp3' },
-		i: { img:'.crash1', type:'crash', vol:0.8, name:'crash1.mp3' },
-		o: { img:'.crash2', type:'crash', vol:0.7, name:'crash2.mp3' },
-		p: { img:'.crash3', type:'crash', vol:0.6, rate:1, name:'ride.mp3' },
-		q: { img:'.crash3', type:'crash', vol:0.6, rate:1, name:'ride.mp3' },
-		l: { img:'.crash3', type:'crash', vol:0.7, name:'crispride.mp3' },
-		w: { img:'.tom1', type:'drum', vol:1, name:'tom1.mp3' },
-		t: { img:'.tom1', type:'drum', vol:1, name:'tom1.mp3' },
-		e: { img:'.tom2', type:'drum', vol:1, name:'tom2.mp3' },
-		y: { img:'.tom2', type:'drum', vol:1, rate:1, name:'tom2.mp3' },
-		r: { img:'.tom3', type:'drum', vol:1, rate:1, name:'tom3.mp3' },
-		u: { img:'.tom3', type:'drum', vol:1, rate:1, name:'tom3.mp3' }
+		i: { img:'.crash1', type:'crash', vol:0.8, name:'crash1.ogg' },
+		o: { img:'.crash2', type:'crash', vol:0.7, name:'crash2.ogg' },
+		p: { img:'.crash3', type:'crash', vol:0.6, rate:1, name:'ride.ogg' },
+		q: { img:'.crash3', type:'crash', vol:0.6, rate:1, name:'ride.ogg' },
+		l: { img:'.crash3', type:'crash', vol:0.7, name:'crispride.ogg' },
+		w: { img:'.tom1', type:'drum', vol:1, name:'tom1.ogg' },
+		t: { img:'.tom1', type:'drum', vol:1, name:'tom1.ogg' },
+		e: { img:'.tom2', type:'drum', vol:1, name:'tom2.ogg' },
+		y: { img:'.tom2', type:'drum', vol:1, rate:1, name:'tom2.ogg' },
+		r: { img:'.tom3', type:'drum', vol:1, rate:1, name:'tom3.ogg' },
+		u: { img:'.tom3', type:'drum', vol:1, rate:1, name:'tom3.ogg' }
 	}
 
 	function imgFade(img) {
@@ -57,7 +60,11 @@
 		setTimeout(()=>img.style = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;',60)
 	}
 
+	let key = false
+
 	async function playDrum(e){
+		if(key == false) {
+			key = true
 		let drum = drumset[e.key]
 		if(typeof drum === 'undefined' || e.altKey === true) return;
 		let mp = await makeAudio(drum.name)
@@ -73,19 +80,22 @@
 		imgFade(drum.img)
 		mp.play()
 		return mp.remove()
+		}else{
+			return
+		}
 	}
 	doc.addEventListener("keydown", playDrum)
 
+
    ell("#drum-ring").forEach( img=> {
-   	img.addEventListener("click", async im => {
+   	img.addEventListener("click", async function(im) {
    		im.stopPropagation();
    		let tmp
-         Object.entries(drumset).forEach( ds=> {
+         Object.entries(drumset).forEach( (ds)=> {
          	let set_mp = drumset[ds[0]]
-         	if (el(set_mp.img) == this) tmp = set_mp
+         	if (el(set_mp.img) == this) tmp = set_mp;
          })
          let mp = await makeAudio(tmp.name);
-         mp.currentTime = 0
          imgFade(tmp.img)
          mp.play()
       })
