@@ -70,7 +70,7 @@
 		if(drum.triplet) {
 			setTimeout(async ()=> {
 				mp.currentTime = 0
-				mp.play()
+				await mp.play()
 			}, 70)
 		}
 		imgFade(drum.img)
