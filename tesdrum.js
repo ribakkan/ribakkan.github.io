@@ -12,13 +12,6 @@
     wd.el = doc['querySelector']['bind'](doc);
 
     function makeAudio(src) {
-        /*return new Promise((res, rej) => {
-                mp.src = 'mp3/' + src
-                mp.preload = 'auto'
-                mp.currentTime = 0;
-                mp.load()
-                return res(mp)
-            })*/
         let mp = new wd.Audio()
         mp['src'] = 'mp3/' + src
         mp['preload'] = 'auto'
@@ -26,168 +19,45 @@
         return mp;
     }
 
-    const drumset = {
-        z: {
-            img: '.kick1',
-            type: 'drum',
-            vol: 1,
-            name: 'bass.mp3'
-        },
-        b: {
-            img: '.kick2',
-            type: 'drum',
-            vol: 1,
-            name: 'bass.mp3'
-        },
-        a: {
-            img: '.hh-close',
-            type: 'crash',
-            vol: 0.5,
-            name: 'hh-close.mp3'
-        },
-        h: {
-            img: '.hh-close',
-            type: 'crash',
-            vol: 0.5,
-            name: 'hh-close.mp3'
-        },
-        k: {
-            img: '.hh-close-right',
-            type: 'crash',
-            vol: 0.5,
-            name: 'hh-close.mp3'
-        },
-        n: {
-            img: '.hh-close',
-            type: 'crash',
-            vol: 0.4,
-            semiopen: 300,
-            name: 'hh-open.mp3'
-        },
-        s: {
-            img: '.hh-close',
-            type: 'crash',
-            vol: 0.4,
-            name: 'hh-open.mp3'
-        },
-        j: {
-            img: '.hh-close',
-            type: 'crash',
-            vol: 0.4,
-            name: 'hh-open.mp3'
-        },
-        f: {
-            img: '.splash',
-            type: 'crash',
-            vol: 0.7,
-            name: 'splash2.mp3'
-        },
-        x: {
-            img: '.k-snare',
-            type: 'drum',
-            vol: 0.2,
-            rate: 2,
-            triplet: true,
-            name: 'snare4.mp3'
-        },
-        v: {
-            img: '.k-snare',
-            type: 'drum',
-            vol: 0.2,
-            rate: 2,
-            triplet: true,
-            name: 'snare4.mp3'
-        },
-        c: {
-            img: '.k-snare',
-            type: 'drum',
-            vol: 0.6,
-            name: 'rim2.mp3'
-        },
-        d: {
-            img: '.k-snare',
-            type: 'drum',
-            vol: 0.8,
-            name: 'snare4.mp3'
-        },
-        g: {
-            img: '.k-snare',
-            type: 'drum',
-            vol: 0.8,
-            name: 'snare4.mp3'
-        },
-        i: {
-            img: '.crash1',
-            type: 'crash',
-            vol: 0.8,
-            name: 'crash1.mp3'
-        },
-        o: {
-            img: '.crash2',
-            type: 'crash',
-            vol: 0.7,
-            name: 'crash2.mp3'
-        },
-        p: {
-            img: '.crash3',
-            type: 'crash',
-            vol: 0.6,
-            rate: 1,
-            name: 'ride.mp3'
-        },
-        q: {
-            img: '.crash3',
-            type: 'crash',
-            vol: 0.6,
-            rate: 1,
-            name: 'ride.mp3'
-        },
-        l: {
-            img: '.crash3',
-            type: 'crash',
-            vol: 0.7,
-            name: 'crispride.mp3'
-        },
-        w: {
-            img: '.tom1',
-            type: 'drum',
-            vol: 1,
-            name: 'tom1.mp3'
-        },
-        t: {
-            img: '.tom1',
-            type: 'drum',
-            vol: 1,
-            name: 'tom1.mp3'
-        },
-        e: {
-            img: '.tom2',
-            type: 'drum',
-            vol: 1,
-            name: 'tom2.mp3'
-        },
-        y: {
-            img: '.tom2',
-            type: 'drum',
-            vol: 1,
-            rate: 1,
-            name: 'tom2.mp3'
-        },
-        r: {
-            img: '.tom3',
-            type: 'drum',
-            vol: 1,
-            rate: 1,
-            name: 'tom3.mp3'
-        },
-        u: {
-            img: '.tom3',
-            type: 'drum',
-            vol: 1,
-            rate: 1,
-            name: 'tom3.mp3'
-        }
+    const drumKeys = [];
+
+    function makeDrumKey(keyNum, keyName, imgName, typeName, volume = 1, soundName, rate = 1, tripletName = false, semiopen = 300) {
+        drumKeys[keyNum] = [{
+            key: keyName,
+            img: imgName,
+            type: typeName,
+            vol: volume,
+            name: soundName,
+            rate: rate,
+            triplet: tripletName
+        }]
     }
+    makeDrumKey(65, "A", '.hh-close', 'crash', 0.4, 'hh-close.mp3')
+    makeDrumKey(66, "B", '.kick2', 'drum', 1, 'bass.mp3')
+    makeDrumKey(67, "C", '.k-snare', 'drum', 0.4, 'rim2.mp3')
+    makeDrumKey(68, "D", '.k-snare', 'drum', 0.8, 'snare4.mp3')
+    makeDrumKey(69, "E", '.tom2', 'drum', 1, 'tom2.mp3')
+    makeDrumKey(70, "F", '.splash', 'crash', 0.5, 'splash2.mp3')
+    makeDrumKey(71, "G", '.k-snare', 'drum', 0.8, 'snare4.mp3')
+    makeDrumKey(72, "H", '.hh-close', 'crash', 0.4, 'hh-close.mp3')
+    makeDrumKey(73, "I", '.crash1', 'crash', 0.650, 'crash1.mp3')
+    makeDrumKey(74, "J", '.hh-close', 'crash', 0.3, 'hh-open.mp3')
+    makeDrumKey(75, "K", '.hh-close-right', 'crash', 0.4, 'hh-close.mp3')
+    makeDrumKey(76, "L", '.crash3', 'crash', 0.5, 'crispride.mp3')
+        // makeDrumKey(77, "M", '.kick2', 'drum', 1, 'bass.mp3')
+    makeDrumKey(78, 'N', '.hh-close', 'crash', 0.3, 'hh-open.mp3', 1, false, 300)
+    makeDrumKey(79, 'O', '.crash2', 'crash', 0.650, 'crash2.mp3')
+    makeDrumKey(80, "P", '.crash3', 'crash', 0.6, 'ride.mp3', 1)
+    makeDrumKey(81, "Q", '.crash3', 'crash', 0.5, 'ride.mp3', 1)
+    makeDrumKey(82, "R", '.tom3', 'drum', 1, 'tom3.mp3', 1)
+    makeDrumKey(83, "S", '.hh-close', 'crash', 0.3, 'hh-open.mp3')
+    makeDrumKey(84, "T", '.tom1', 'drum', 1, 'tom1.mp3')
+    makeDrumKey(85, "U", '.tom3', 'drum', 1, 'tom3.mp3', 1)
+    makeDrumKey(86, "V", '.k-snare', 'drum', 0.2, 'snare4.mp3', 2, true)
+    makeDrumKey(87, "W", '.tom1', 'drum', 1, 'tom1.mp3')
+    makeDrumKey(88, "X", '.k-snare', 'drum', 0.2, 'snare4.mp3', 2, true)
+    makeDrumKey(89, "Y", '.tom2', 'drum', 1, 'tom2.mp3', 1)
+    makeDrumKey(90, 'Z', '.kick1', 'drum', 1, 'bass.mp3')
 
     function imgFade(img) {
         img = el(img)
@@ -195,43 +65,36 @@
         setTimeout(() => img['style'] = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;', 60)
     }
 
-    async function playDrum(e) {
-        // e.preventDefault()
-        if (e.repeat) return;
+    doc.addEventListener("keydown", setDrum);
 
-        let drum = drumset[e.key];
+    async function setDrum(e) {
+        if (e.repeat) return;
+        const drum = drumKeys[e.keyCode];
         if (typeof(drum) == 'undefined' || e.altKey == true) return;
-        let mp = makeAudio(drum['name'])
-        mp.onended = (e) => mp.remove();
-        mp.volume = drum.vol
-        mp.playbackRate = drum.rate || 1
-        if (drum.semiopen) setTimeout(() => mp.volume = 0, drum.semiopen);
-        if (drum.triplet) {
+        let mp = makeAudio(drum[0]['name'])
+        mp.onended = async() => await mp.remove();
+        mp.volume = drum[0].vol
+        mp.playbackRate = drum[0]['rate'] || 1
+        if (drum[0]['semiopen']) setTimeout(() => mp.volume = 0, drum[0]['semiopen']);
+        if (drum[0]['triplet']) {
             setTimeout(() => {
                 mp.currentTime = 0
                 mp.play()
             }, 75)
         }
-        await mp.play().then(imgFade(drum.img));
-
-        // setTimeout(() => mp = null, 1000)
-        // mp.remove()
-        // return mp.remove()
+        return await mp.play().then(imgFade(drum[0]['img']));
     }
-    doc.addEventListener("keydown", playDrum, false);
-
 
     ell("#drum-ring").forEach(img => {
         img.addEventListener("click", async function(im) {
             im.stopPropagation();
-            let tmp
-            Object.entries(drumset).forEach((ds) => {
-                let set_mp = drumset[ds[0]]
+            let tmp;
+            Object.entries(drumKeys).forEach((drumKey) => {
+                let set_mp = drumKeys[drumKey[0]][0]
                 if (el(set_mp.img) == this) tmp = set_mp;
             })
             let mp = await makeAudio(tmp.name);
-            mp.play()
-            imgFade(tmp.img)
+            return mp.play().then(imgFade(tmp.img))
         })
     })
 
