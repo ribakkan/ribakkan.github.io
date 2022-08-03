@@ -5,6 +5,7 @@
 ~o~ Date Create      : 18-04-2020
 ----------------------------------------------------------------------------------
 */
+
 (function(doc, wd) {
     'use strict';
     wd.cl = console.log;
@@ -21,7 +22,7 @@
 
     const drumKeys = [];
 
-    function makeDrumKey(keyNum, keyName, imgName, typeName, volume = 1, soundName, rate = 1, tripletName = false, semiopen = 300) {
+    function makeDrumKey(keyNum, keyName, imgName, typeName, volume = 1, soundName, rate = 1, tripletName = false, semiopen = null) {
         drumKeys[keyNum] = [{
             key: keyName,
             img: imgName,
@@ -29,7 +30,8 @@
             vol: volume,
             name: soundName,
             rate: rate,
-            triplet: tripletName
+            triplet: tripletName,
+            semiopen: semiopen
         }]
     }
     makeDrumKey(65, "A", '.hh-close', 'crash', 0.4, 'hh-close.mp3')
@@ -65,7 +67,7 @@
         setTimeout(() => img['style'] = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;', 60)
     }
 
-    doc.addEventListener("keydown", setDrum);
+    doc.addEventListener("keydown", setDrum, false);
 
     async function setDrum(e) {
         if (e.repeat) return;
@@ -115,3 +117,22 @@
         })
     }
 })(document, typeof window !== "undefined" ? window : this)
+
+document.addEventListener('readystatechange', (event) => {
+    console.log('oke')
+    console.log(event)
+})
+
+document.addEventListener("DOMContentLoaded", function(e) {
+
+    function makeAudio(src) {
+        let mp = new wd.Audio()
+        mp['src'] = 'mp3/' + src
+        mp['preload'] = 'auto'
+        mp['currentTime'] = 0;
+        return mp;
+    }
+    console.log(document.readyState)
+    setTimeout(() => makeAudio('hh-close.mp3').play(), 1000)
+    console.log(e)
+})
