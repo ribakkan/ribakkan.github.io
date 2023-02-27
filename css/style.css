@@ -103,6 +103,7 @@ body {
 .container {
         /*background: rgb(0, 0, 0, 0.5);*/
         width: 100%;
+        margin-top: 3%;
         display: block;
         position: absolute;
         align-content: center;
@@ -125,6 +126,7 @@ body {
 
 /* ------- DRUM SET -------- */
 #drum-ring {
+        user-select: none;
 /*      transition: all 0.05s;
         -webkit-transition-timing-function: cubic-bezier(0.3,1,0.3,1);
         transition-timing-function: cubic-bezier(0.3,1,0.3,1);*/
@@ -137,13 +139,13 @@ body {
         position: relative;
         display: flex;
         justify-content: center;
-        margin-top: 260px;
+        margin-top: 270px;
         /*background: cyan;*/
 }
 
 .kick1, .kick2 {
-        width: 210px;
-        height: 210px;
+        width: 230px;
+        height: 230px;
         margin-top: 80px;
         margin-left: 10px;
 }
@@ -151,8 +153,8 @@ body {
 .k-snare {
         position: absolute;
         margin-left: 5px;
-        width: 160px;
-        height: 160px;
+        width: 180px;
+        height: 180px;
 }
 
 .tom1, .tom2, .tom3 {
@@ -162,22 +164,22 @@ body {
 .tom1 {
         margin-top: -50px;
         left: 37%;
-        width: 120px;
-        height: 120px;
+        width: 130px;
+        height: 130px;
 }
 
 .tom2 {
-        margin-left: 15px;
-        margin-top: -110px;
-        width: 140px;
-        height: 140px;
+        margin-left: 1%;
+        margin-top: -120px;
+        width: 160px;
+        height: 160px;
 }
 
 .tom3 {
         margin-top: 70px;
-        margin-left: 43%;
-        width: 180px;
-        height: 180px;
+        margin-left: 45%;
+        width: 200px;
+        height: 200px;
 }
 
 .crash {
@@ -194,47 +196,47 @@ body {
 }
 
 .hh-close, .hh-close-right {
-        width: 130px;
-        height: 130px;
+        width: 150px;
+        height: 150px;
 }
 .hh-close {
-        margin-left: 5px;
+        margin-left: 1%;
         margin-top: 260px;
 }
 
 .hh-close-right {
-        margin-top: 220px;
-        margin-left: 380px;
+        margin-top: 230px;
+        margin-left: 38%;
 }
 
 .crash1 {
         z-index: 1;
-        margin-left: 18px;
-        margin-top: 150px;
-        width: 150px;
-        height: 150px;
+        margin-left: 2%;
+        margin-top: 130px;
+        width: 170px;
+        height: 170px;
 }
 
 .splash {
         margin-top: 130px;
-        margin-left: 170px;
-        width: 110px;
-        height: 110px;
+        margin-left: 17%;
+        width: 130px;
+        height: 130px;
 }
 
 .crash2 {
         z-index: 2;
-        margin-top: 90px;
+        margin-top: 60px;
         margin-left: 36%;
-        width: 160px;
-        height: 160px;
+        width: 180px;
+        height: 180px;
 }
 
 .crash3 {
-        margin-left: 52%;
+        margin-left: 50%;
         margin-top: 160px;
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
 }
 
 /* ANIMATION ZOOM */
@@ -244,8 +246,6 @@ body {
         box-shadow: 0px 1px 9px #1C1C1C;
 }
 
-@media (min-width: 1350px){
-        .container {
-                padding-top: 5%;
-        }
+@media screen and (max-width: 1020px){
+
 }
