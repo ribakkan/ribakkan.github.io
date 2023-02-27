@@ -1,0 +1,254 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+body {
+        background-image: url(../img/kick-skin.png);
+        background-repeat: space;
+        /*background-repeat: no-repeat;*/
+        background-size: 35%;
+        background-position: 0 220px;
+        background-attachment: fixed;
+        background-blend-mode: color-burn;
+        background-color: #225569;
+}
+
+.title {
+        position: relative;
+        padding: 3px;
+        background: linear-gradient(to right, #0060ce, #0060ce, #0ba5d8);
+        color: maroon;
+        text-shadow: 0px 2px 2px #fff;
+        text-align: center;
+        font-family: cursive;
+        font-weight: bold;
+        font-size: 40pt;
+        transition: all 0.2s ease;
+        -webkit-transition-timing-function: cubic-bezier(0.2,1,0.5,1);
+        transition-timing-function: cubic-bezier(0.2,1,0.5,1);
+}
+
+.mp-box {
+        margin: 10px;
+        padding: 10px;
+        position: absolute;
+        display: block;
+        width: 26%;
+        height: 140px;
+        box-shadow: 2px 4px 3px #0ba5d8;
+        border-radius: 5px;
+        background: linear-gradient(to right, #62E800, #62E800, green);
+        overflow: hidden;
+        z-index: 3;
+        transition: all 0.5s;
+        -webkit-transition-timing-function: cubic-bezier(0.5,0.5,0.5,1.5);
+        transition-timing-function: cubic-bezier(0.5,0.5,0.5,1.5);
+}
+
+.mp-box:hover {
+        height: 450px;
+        transform-style: preserve-3d;
+}
+
+.mp-title {
+        width: 100%;
+        padding: 5px;
+        border: 2px solid maroon;
+        background: #DFFEDE;
+        margin-top: 5px;
+        border-radius: 5px;
+}
+
+.mp3-file {
+        font-family: cooper;
+        color: green;
+        width: 100%;
+        padding: 2px;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid maroon;
+        border-radius: 5px;
+}
+
+.mp3-file:active{
+        color: navy;
+}
+
+.mp-audio {
+        width: 100%;
+}
+
+.mp-box .mp-audio {
+        border-radius: 50px;
+        border: 2px solid maroon;
+        outline: none;
+        margin-top: 10px;
+        height: 25px;
+}
+
+.drum-help {
+        padding: 10px;
+        width: 100%;
+        margin-top: 30px;
+        background: #EFF;
+        font-size: 11pt;
+        font-family: verdana, sans-serif;
+        list-style: none;
+        border-radius: 10px;
+        border: 2px solid maroon;
+}
+
+.container {
+        /*background: rgb(0, 0, 0, 0.5);*/
+        width: 100%;
+/*        height: 100%;*/
+        margin-top: 10%;
+/*        display: block;*/
+        position: absolute;
+/*        align-content: center;*/
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+        box-sizing: border-box;
+}
+
+.s-icon {
+        width: 60px;
+        border-radius: 50px;
+        position: absolute;
+        margin-left: 23%;
+        margin-top: 30%;
+        font-size: 50pt;
+        font-weight: bold;
+        font-family: verdana;
+        color: rgb(3, 223, 237, 0.7);
+}
+
+/* ------- DRUM SET -------- */
+#drum-ring {
+        user-select: none;
+/*      transition: all 0.05s;
+        -webkit-transition-timing-function: cubic-bezier(0.3,1,0.3,1);
+        transition-timing-function: cubic-bezier(0.3,1,0.3,1);*/
+        border-radius: 50%;
+        cursor: pointer;
+}
+
+.kick {
+        padding: 10px 0px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-top: 260px;
+        /*background: cyan;*/
+}
+
+.kick1, .kick2 {
+        width: 260px;
+        height: 260px;
+        margin-top: 80px;
+        margin-left: 10px;
+}
+
+.k-snare {
+        position: absolute;
+/*        margin-left: 5px;*/
+        width: 200px;
+        height: 200px;
+}
+
+.tom1, .tom2, .tom3 {
+        position: absolute;
+        z-index: 1;
+}
+.tom1 {
+        margin-top: -70px;
+        left: 34.2%;
+        width: 160px;
+        height: 160px;
+}
+
+.tom2 {
+        margin-left: 10px;
+        margin-top: -140px;
+        width: 180px;
+        height: 180px;
+}
+
+.tom3 {
+        margin-top: 70px;
+        margin-left: 50%;
+        width: 220px;
+        height: 220px;
+}
+
+.crash {
+        /*margin-left: 370px;*/
+        margin-left : 23%;
+/*        margin-top: 10%;*/
+        display: flex;
+        position: relative;
+        z-index: 2;
+}
+
+.hh-close, .hh-close-right, .crash1, .crash2, .crash3 , .splash{
+        position: absolute;
+}
+
+.hh-close, .hh-close-right {
+        width: 170px;
+        height: 170px;
+}
+.hh-close {
+        margin-left: 0%;
+        margin-top: 20%;
+}
+
+.hh-close-right {
+        margin-top: 19%;
+        margin-left: 480px;
+}
+
+.crash1 {
+        z-index: 1;
+        margin-left: 18px;
+        margin-top: 90px;
+        width: 190px;
+        height: 190px;
+/*s        position: absolute;*/
+}
+
+.splash {
+        margin-top: 7%;
+        margin-left: 19%;
+        width: 130px;
+        height: 130px;
+}
+
+.crash2 {
+        z-index: 2;
+/*        margin-top: 1%;*/
+        margin-left: 40%;
+        width: 200px;
+        height: 200px;
+}
+
+.crash3 {
+        margin-left: 52%;
+        margin-top: 12%;
+        width: 220px;
+        height: 220px;
+}
+
+/* ANIMATION ZOOM */
+.playing {
+        -webkit-transform : scale(1.03);
+        transform: scale(1.03);
+        box-shadow: 0px 1px 9px #1C1C1C;
+}
+
+@media screen and (max-width: 1020px){
+
+}
