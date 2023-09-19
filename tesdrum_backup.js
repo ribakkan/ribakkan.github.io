@@ -1,8 +1,9 @@
 /*
-------------------------------- SASBA DRUM v1.3 ----------------------------------
+------------------------------- SASBA DRUM v2 ----------------------------------
 ~o~ Application Name : Sasba~Realdrum
 ~o~ Author Name      : Dedi sasba
 ~o~ Date Create      : 18-04-2020
+~o~ Date Update      : 19-09-2023
 ----------------------------------------------------------------------------------
 */
 (function(doc, wd) {
@@ -13,11 +14,21 @@
 
     function makeAudio(src) {
         let mp = new wd.Audio()
-        mp['src'] = './mp3/' + src
-        mp['preload'] = 'auto'
+        mp.ontimeupdate = function(){
+            if(Math.floor(mp.duration) < 1) return;
+            let timeStamp = Math.floor ((mp.currentTime / mp.duration) * 100)
+            if(timeStamp >= 80) {
+		mp.volume = 0;
+                mp.remove();
+            }
+            //console.log(Math.floor(timeStamp), mp.duration)
+        }
+        mp['src'] = './mp3/' + src;
+        mp['preload'] = 'auto';
         mp['currentTime'] = 0;
         return mp;
     }
+
 
     const drumset = {
         z: {
@@ -55,7 +66,7 @@
         n: {
             img: '.hh-close',
             type: 'crash',
-            vol: 0.3,
+            vol: 0.2,
             semiopen: 250,
             name: 'hh-open.mp3'
                 // long semi open
@@ -63,43 +74,43 @@
         m: {
             img: '.hh-close',
             type: 'crash',
-            vol: 0.3,
+            vol: 0.2,
             semiopen: 300,
             name: 'hh-open.mp3'
         },
         s: {
             img: '.hh-close',
             type: 'crash',
-            vol: 0.250,
+            vol: 0.2,
             name: 'hh-open.mp3'
         },
         j: {
             img: '.hh-close',
             type: 'crash',
-            vol: 0.250,
+            vol: 0.2,
             name: 'hh-open.mp3'
         },
         f: {
             img: '.splash',
             type: 'crash',
-            vol: 0.4,
+            vol: 0.3,
             name: 'splash2.mp3'
         },
         x: {
             img: '.k-snare',
             type: 'drum',
-            vol: 0.2,
+            vol: 0.200,
             rate: 2,
             triplet: true,
-            name: 'snare4.mp3'
+            name: 'snare4.2.mp3'
         },
         v: {
             img: '.k-snare',
             type: 'drum',
-            vol: 0.2,
-            rate: 2,
+            vol: 0.200,
+            // rate: 2,
             triplet: true,
-            name: 'snare4.mp3'
+            name: 'snare4.2.mp3'
         },
         c: {
             img: '.k-snare',
@@ -122,33 +133,33 @@
         i: {
             img: '.crash1',
             type: 'crash',
-            vol: 0.5,
+            vol: 0.3,
             name: 'crash1.mp3'
         },
         o: {
             img: '.crash2',
             type: 'crash',
-            vol: 0.4,
+            vol: 0.3,
             name: 'crash2.mp3'
         },
         p: {
             img: '.crash3',
             type: 'crash',
-            vol: 0.6,
+            vol: 0.3,
             rate: 1,
             name: 'ride.mp3'
         },
         q: {
             img: '.crash3',
             type: 'crash',
-            vol: 0.5,
-            rate: 1,
-            name: 'ride.mp3'
+            vol: 0.3,
+            rate: 0.5,
+            name: 'cymbal-ride-fienup2.mp3'
         },
         l: {
             img: '.crash3',
             type: 'crash',
-            vol: 0.5,
+            vol: 0.3,
             name: 'crispride.mp3'
         },
         w: {
@@ -194,13 +205,16 @@
 
     function imgFade(img) {
         img = el(img);
-        img['style'] = '-webkit-transform:scale(1.06);transform:scale(1.06);box-shadow:0px 1px 9px #1C1C1C;';
-        setTimeout(() => img['style'] = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;', 40);
+        img['style'] = '-webkit-transform:scale(0.96);transform:scale(0.96);box-shadow:0px 2px 9px #1C1C1C;border:1mm ridge rgb(0 200 255 / .4);';
+	// img['style'] = '-webkit-transform:scale(1.06);transform:scale(1.06);box-shadow:0px 2px 9px #1C1C1C;';
+        setTimeout(() => img['style'] = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;', 50);
     }
 
-    wd.addEventListener("keydown", async function(e) {
-        await playDrum(e);
-    });
+    //wd.addEventListener("keydown", async function(e) {
+    //    await playDrum(e);
+    //});
+
+    wd.addEventListener("keydown", playDrum);
 
 
     async function playDrum(e) {
@@ -208,7 +222,7 @@
         let drum = drumset[e.key];
         if (typeof(drum) == 'undefined' || e.altKey == true) return;
         let mp = makeAudio(drum['name']);
-        mp.onended = async() => await mp.remove();
+        // mp.onended = async() => await mp.remove();
         mp.volume = drum.vol
         mp.playbackRate = drum.rate || 1
         if (drum.semiopen) setTimeout(() => mp.volume = 0, drum.semiopen);
@@ -216,13 +230,13 @@
             setTimeout(() => {
                 mp.currentTime = 0
                 mp.play();
-            }, 75);
+            }, 70);
         }
-        return mp.play().then(imgFade(drum.img));
+        await mp.play().then(() => imgFade(drum.img));
     }
 
     function resizeDrum() {
-        document.querySelector('.oncss').href = window.innerHeight > 750 ? 'css/style_resize.css' : 'css/style.css';
+        document.querySelector('.oncss').href = window.innerHeight > 750 ? './css/style_resize.css' : './css/style.css';
     }
 
     resizeDrum();

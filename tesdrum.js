@@ -23,7 +23,7 @@
     const drumKeys = [];
 
     function makeDrumKey(keyNum, keyName, imgName, typeName, volume = 1, soundName, rate = 1, tripletName = false, semiopen = null) {
-        drumKeys[keyNum] = [{
+        return drumKeys[keyNum] = [{
             key: keyName,
             img: imgName,
             type: typeName,
@@ -67,9 +67,9 @@
         setTimeout(() => img['style'] = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;', 60)
     }
 
-    doc.addEventListener("keydown", setDrum, false);
+    doc.addEventListener("keydown", setDrum);
 
-    async function setDrum(e) {
+    function setDrum(e) {
         if (e.repeat) return;
         const drum = drumKeys[e.keyCode];
         if (typeof(drum) == 'undefined' || e.altKey == true) return;
@@ -84,7 +84,7 @@
                 mp.play()
             }, 75)
         }
-        return await mp.play().then(imgFade(drum[0]['img']));
+        return mp.play().then(imgFade(drum[0]['img']));
     }
 
     ell("#drum-ring").forEach(img => {
