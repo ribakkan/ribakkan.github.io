@@ -34,25 +34,24 @@
         return fetch("./mp3/" + audioName).then(e=> e.blob()).then(e=> URL.createObjectURL(e))
     }
 
+    let loadingbox = doc.createElement("div")
+    loadingbox.style = "background: rgba(0, 0, 0, 0.5);position:fixed; display:flex; align-items:center; justify-content:center; z-index:4; width: 100%; height: 100%; top:0;"
+    
+    let loadingText = doc.createElement("div")
+    loadingText.textContent = "LOADING FOR AUDIO..."
+    loadingText.style = "padding: 5px; font-size: 2em; text-shadow:rgb(255 0 0) 1px 1px 5px;; color: #fff;"
+    
+    let anim = loadingbox.animate(
+      [
+        { transform: `scale(1.2)` }
+      ],
+      { duration: 1000, iterations: Infinity }
+    )
+    
+    loadingbox.appendChild(loadingText)
+    doc.body.appendChild(loadingbox)
+
     wd.addEventListener("load", async function(){
-
-        let loadingbox = doc.createElement("div")
-        loadingbox.style = "background: rgba(0, 0, 0, 0.5);position:fixed; display:flex; align-items:center; justify-content:center; z-index:4; width: 100%; height: 100%; top:0;"
-        
-        let loadingText = doc.createElement("div")
-        loadingText.textContent = "LOADING FOR AUDIO..."
-        loadingText.style = "padding: 5px; font-size: 2em; text-shadow:rgb(255 0 0) 1px 1px 5px;; color: #fff;"
-        
-        let anim = loadingbox.animate(
-          [
-            { transform: `scale(1.2)` }
-          ],
-          { duration: 1000, iterations: Infinity }
-        )
-        
-        loadingbox.appendChild(loadingText)
-        doc.body.appendChild(loadingbox)
-
         const listName = Object.keys(mpBlob);
         let blobUrls = await Promise.all( listName.map(name => set_audio_url_blob(name)) )
         .catch(error=> {
@@ -74,12 +73,11 @@
             if(Math.floor(mp.duration) < 1) return;
             let timeStamp = Math.floor ((mp.currentTime / mp.duration) * 100)
             if(timeStamp >= 80) {
-		mp.volume = 0;
+		        mp.volume = 0;
                 mp.remove();
             }
             //console.log(Math.floor(timeStamp), mp.duration)
         }
-        mp['src'] = './mp3/' + src;
         mp['preload'] = 'auto';
         mp['currentTime'] = 0;
         return mp;
