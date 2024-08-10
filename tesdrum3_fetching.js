@@ -51,7 +51,7 @@
         )
         
         loadingbox.appendChild(loadingText)
-        doc.appendChild(loadingbox)
+        doc.body.appendChild(loadingbox)
 
         const listName = Object.keys(mpBlob);
         let blobUrls = await Promise.all( listName.map(name => set_audio_url_blob(name)) )
