@@ -60,8 +60,7 @@
         })
         listName.forEach(function(url, i){
             mpBlob[url] = blobUrls[i]
-            
-            URL.revokeObjectURL(blobUrls[i])
+            // URL.revokeObjectURL(blobUrls[i])
         })
 
         anim.cancel()
@@ -71,15 +70,14 @@
 
     function makeAudio(name) {
         let mp = new wd.Audio( mpBlob[name] )
-        mp.ontimeupdate = function(){
-            if(Math.floor(mp.duration) < 1) return;
-            let timeStamp = Math.floor ((mp.currentTime / mp.duration) * 100)
-            if(timeStamp >= 80) {
-		        mp.volume = 0;
-                mp.remove();
-            }
-            //console.log(Math.floor(timeStamp), mp.duration)
-        }
+  //       mp.ontimeupdate = function(){
+  //           if(Math.floor(mp.duration) < 1) return;
+  //           let timeStamp = Math.floor ((mp.currentTime / mp.duration) * 100)
+  //           if(timeStamp >= 80) {
+		// mp.volume = 0;
+  //               mp.remove();
+  //           }
+  //       }
         // mp['preload'] = 'auto';
         mp['currentTime'] = 0;
         return mp;
