@@ -60,6 +60,8 @@
         })
         listName.forEach(function(url, i){
             mpBlob[url] = blobUrls[i]
+            
+            URL.revokeObjectURL(blobUrls[i])
         })
 
         anim.cancel()
@@ -78,7 +80,7 @@
             }
             //console.log(Math.floor(timeStamp), mp.duration)
         }
-        mp['preload'] = 'auto';
+        // mp['preload'] = 'auto';
         mp['currentTime'] = 0;
         return mp;
     }
