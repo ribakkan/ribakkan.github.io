@@ -199,7 +199,7 @@
         p: {
             img: '.crash3',
             type: 'crash',
-            vol: 0.5,
+            vol: 0.4,
             rate: 1,
             name: 'ride.mp3'
         },
