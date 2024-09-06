@@ -153,7 +153,7 @@
         x: {
             img: '.k-snare',
             type: 'drum',
-            vol: 0.200,
+            vol: 0.3,
             rate: 2,
             triplet: true,
             name: 'snare4.2.mp3'
@@ -161,7 +161,7 @@
         v: {
             img: '.k-snare',
             type: 'drum',
-            vol: 0.200,
+            vol: 0.3,
             // rate: 2,
             triplet: true,
             name: 'snare4.2.mp3'
@@ -169,7 +169,7 @@
         c: {
             img: '.k-snare',
             type: 'drum',
-            vol: 0.3,
+            vol: 0.5,
             name: 'rim2.mp3'
         },
         d: {
@@ -187,7 +187,7 @@
         i: {
             img: '.crash1',
             type: 'crash',
-            vol: 0.3,
+            vol: 0.4,
             name: 'crash1.mp3'
         },
         o: {
@@ -199,7 +199,7 @@
         p: {
             img: '.crash3',
             type: 'crash',
-            vol: 0.3,
+            vol: 0.5,
             rate: 1,
             name: 'ride.mp3'
         },
