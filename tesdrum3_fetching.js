@@ -153,7 +153,7 @@
         x: {
             img: '.k-snare',
             type: 'drum',
-            vol: 0.3,
+            vol: 0.2,
             rate: 2,
             triplet: true,
             name: 'snare4.2.mp3'
@@ -161,7 +161,7 @@
         v: {
             img: '.k-snare',
             type: 'drum',
-            vol: 0.3,
+            vol: 0.2,
             // rate: 2,
             triplet: true,
             name: 'snare4.2.mp3'
@@ -169,7 +169,7 @@
         c: {
             img: '.k-snare',
             type: 'drum',
-            vol: 0.5,
+            vol: 0.4,
             name: 'rim2.mp3'
         },
         d: {
