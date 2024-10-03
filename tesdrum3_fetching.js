@@ -258,10 +258,24 @@
     }
 
     function imgFade(img) {
-        img = el(img);
-        img['style'] = '-webkit-transform:scale(0.96);transform:scale(0.96);box-shadow:0px 2px 9px #1C1C1C;border:1mm ridge rgb(0 200 255 / .4);';
-	// img['style'] = '-webkit-transform:scale(1.06);transform:scale(1.06);box-shadow:0px 2px 9px #1C1C1C;';
-        setTimeout(() => img['style'] = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;', 50);
+        // img = el(img);
+        // img['style'] = '-webkit-transform:scale(0.96);transform:scale(0.96);box-shadow:0px 2px 9px #1C1C1C;border:1mm ridge rgb(0 200 255 / .4);';
+        // setTimeout(() => img['style'] = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;', 50);
+	imgElement = el(img);
+        imgElement.animate([
+            {
+                transform: "scale(0.90)",
+                boxShadow: "0px 4px 8px #1C1C1C",
+                border: "1mm ridge rgba(0, 200, 255, 0.5)"
+            },
+            {
+                transform: "scale(1)", 
+                boxShadow: "unset",
+                border: "unset"
+            }
+        ], {
+            duration: 100
+        })
     }
 
     //wd.addEventListener("keydown", async function(e) {
