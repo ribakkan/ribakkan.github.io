@@ -266,7 +266,7 @@
             {
                 transform: "scale(0.90)",
                 boxShadow: "0px 0px 8px 4px inset #1C1C1C",
-                filter: drop-shadow(0 0 1rem rgba(0, 200, 255))
+                filter: "drop-shadow(0 0 1rem rgba(0, 200, 255))"
             },
             {
                 transform: "scale(1)", 
