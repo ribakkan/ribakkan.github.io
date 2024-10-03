@@ -274,7 +274,7 @@
                 border: "unset"
             }
         ], {
-            duration: 200
+            duration: 100
         })
     }
 
