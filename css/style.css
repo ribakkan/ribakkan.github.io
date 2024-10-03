@@ -124,14 +124,21 @@ body {
         color: rgb(3, 223, 237, 0.7);
 }
 
+img {
+        -webkit-user-drag: none;
+        user-drag: none;
+        -webkit-user-select: none;
+        user-select: none;
+}
+
 /* ------- DRUM SET -------- */
 #drum-ring {
-        user-select: none;
 /*      transition: all 0.05s;
         -webkit-transition-timing-function: cubic-bezier(0.3,1,0.3,1);
         transition-timing-function: cubic-bezier(0.3,1,0.3,1);*/
         border-radius: 50%;
         cursor: pointer;
+        transform: scale(1);
 }
 
 .kick {
