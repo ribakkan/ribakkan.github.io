@@ -70,6 +70,7 @@
 
     function makeAudio(name) {
         let mp = new wd.Audio( mpBlob[name] )
+	mp.onended = () => mp.remove();
   //       mp.ontimeupdate = function(){
   //           if(Math.floor(mp.duration) < 1) return;
   //           let timeStamp = Math.floor ((mp.currentTime / mp.duration) * 100)
@@ -187,13 +188,13 @@
         i: {
             img: '.crash1',
             type: 'crash',
-            vol: 0.350,
+            vol: 0.300,
             name: 'crash1.mp3'
         },
         o: {
             img: '.crash2',
             type: 'crash',
-            vol: 0.3,
+            vol: 0.250,
             name: 'crash2.mp3'
         },
         p: {
@@ -208,7 +209,7 @@
             type: 'crash',
             vol: 0.3,
             rate: 0.5,
-            name: 'cymbal-ride-fienup2.mp3'
+            name: 'ride.mp3'
         },
         l: {
             img: '.crash3',
@@ -286,8 +287,9 @@
 
     function playDrum(e) {
         if (e.repeat) return;
-        let drum = drumset[e.key];
-        if (typeof(drum) == 'undefined' || e.altKey == true) return;
+        let drum = drumset[e.key.toLowerCase()];
+	if(!drum) return;
+        // if (typeof(drum) == 'undefined' || e.altKey) return;
         let mp = makeAudio(drum['name']);
         // mp.onended = async() => await mp.remove();
         mp.volume = drum.vol
