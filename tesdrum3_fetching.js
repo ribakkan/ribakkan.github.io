@@ -102,19 +102,19 @@
         a: {
             img: '.hh-close',
             type: 'crash',
-            vol: 0.2,
+            vol: 0.250,
             name: 'hh-close.mp3'
         },
         h: {
             img: '.hh-close',
             type: 'crash',
-            vol: 0.2,
+            vol: 0.250,
             name: 'hh-close.mp3'
         },
         k: {
             img: '.hh-close-right',
             type: 'crash',
-            vol: 0.2,
+            vol: 0.250,
             name: 'hh-close.mp3'
         },
         // short semi open
@@ -214,7 +214,7 @@
         l: {
             img: '.crash3',
             type: 'crash',
-            vol: 0.2,
+            vol: 0.250,
             name: 'crispride.mp3'
         },
         w: {
