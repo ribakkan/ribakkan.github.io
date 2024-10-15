@@ -301,7 +301,9 @@
                 mp.play();
             }, 70);
         }
-        mp.play().then(() => imgFade(drum.img));
+        // mp.play().then(() => imgFade(drum.img));
+	mp.play()
+	imgFade(drum.img)
     }
 
     function resizeDrum() {
