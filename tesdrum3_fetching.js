@@ -46,7 +46,7 @@
     }
 
     async function set_audio_base64 (audioName) {
-        return fetch("./mp3/" + audioName).then(e=> e.blob()).then(e=> arrayBufferToBase64(e))
+        return fetch("./mp3/" + audioName).then(e=> e.arrayBuffer()).then(e=> arrayBufferToBase64(e))
     }
 
     let loadingbox = doc.createElement("div")
