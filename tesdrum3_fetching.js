@@ -198,13 +198,13 @@
         i: {
             img: ".crash1",
             type: "crash",
-            vol: 0.25,
+            vol: 0.280,
             name: "crash1.mp3"
         },
         o: {
             img: ".crash2",
             type: "crash",
-            vol: 0.25,
+            vol: 0.280,
             name: "crash2.mp3"
         },
         p: {
