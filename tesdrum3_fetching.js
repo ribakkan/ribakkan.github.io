@@ -29,9 +29,24 @@
             'tom2.mp3': '',
             'tom3.mp3': ''
     }
+    
+    function arrayBufferToBase64(buffer) {
+        const byteArray = new Uint8Array(buffer);
+        let binaryString = '';
+    
+        byteArray.forEach((byte) => {
+            binaryString += String.fromCharCode(byte);
+        });
+    
+        return window.btoa(binaryString);
+    }
 
-    function set_audio_url_blob (audioName) {
+    async function set_audio_url_blob (audioName) {
         return fetch("./mp3/" + audioName).then(e=> e.blob()).then(e=> URL.createObjectURL(e))
+    }
+
+    async function set_audio_base64 (audioName) {
+        return fetch("./mp3/" + audioName).then(e=> e.blob()).then(e=> arrayBufferToBase64(e))
     }
 
     let loadingbox = doc.createElement("div")
@@ -53,14 +68,15 @@
 
     wd.addEventListener("load", async function(){
         const listName = Object.keys(mpBlob);
-        let blobUrls = await Promise.all( listName.map(name => set_audio_url_blob(name)) )
+        // let blobUrls = await Promise.all( listName.map(name => set_audio_url_blob(name)) )
+        let blobUrls = await Promise.all( listName.map(key => set_audio_base64(key)) )
         .catch(error=> {
             console.error("ERROR GET AUDIO BLOB URL!")
             console.error(error)
         })
+
         listName.forEach(function(url, i){
             mpBlob[url] = blobUrls[i]
-            // URL.revokeObjectURL(blobUrls[i])
         })
 
         anim.cancel()
@@ -69,20 +85,20 @@
 
 
     function makeAudio(name) {
-        let mp = new wd.Audio( mpBlob[name] )
-	mp.onended = () => mp.remove();
-  //       mp.ontimeupdate = function(){
-  //           if(Math.floor(mp.duration) < 1) return;
-  //           let timeStamp = Math.floor ((mp.currentTime / mp.duration) * 100)
-  //           if(timeStamp >= 80) {
-		// mp.volume = 0;
-  //               mp.remove();
-  //           }
-  //       }
-        // mp['preload'] = 'auto';
-        mp['currentTime'] = 0;
-        return mp;
-    }
+		let mp = new wd.Audio(mpBlob[name]);
+		mp.onended = () => mp.remove();
+        // mp.ontimeupdate = function () {
+        //     if (Math.floor(mp.duration) < 1) return;
+        //     let timeStamp = Math.floor((mp.currentTime / mp.duration) * 100);
+        //     if (timeStamp >= 80) {
+        //         mp.volume = 0;
+        //         mp.remove();
+        //     }
+        // };
+        // mp["preload"] = "auto";
+		mp["currentTime"] = 0;
+		return mp;
+	}
 
 
     const drumset = {
