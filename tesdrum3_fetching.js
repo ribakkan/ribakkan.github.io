@@ -163,7 +163,7 @@
             img: '.k-snare',
             type: 'drum',
             vol: 0.2,
-            // rate: 2,
+            rate: 2,
             triplet: true,
             name: 'snare4.2.mp3'
         },
