@@ -312,7 +312,7 @@
     }
 
     function resizeDrum() {
-        document.querySelector(".oncss").href = window.innerHeight < 750 ? "./css/style_resize.css" : "./css/style.css";
+        document.querySelector(".oncss").href = window.innerHeight > 750 ? "./css/style_resize.css" : "./css/style.css";
     }
 
     resizeDrum();
