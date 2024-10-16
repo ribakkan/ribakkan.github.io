@@ -287,7 +287,7 @@
                 }
             ],
             {
-                duration: 200
+                duration: 150
             }
         );
     }
