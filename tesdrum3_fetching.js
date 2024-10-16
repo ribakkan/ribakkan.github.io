@@ -82,14 +82,6 @@
     function makeAudio(name) {
         let mp = new wd.Audio(mpBlob[name]);
         mp.onended = () => mp.remove();
-        // mp.ontimeupdate = function () {
-        //     if (Math.floor(mp.duration) < 1) return;
-        //     let timeStamp = Math.floor((mp.currentTime / mp.duration) * 100);
-        //     if (timeStamp >= 80) {
-        //         mp.volume = 0;
-        //         mp.remove();
-        //     }
-        // };
         // mp["preload"] = "auto";
         mp["currentTime"] = 0;
         return mp;
@@ -312,7 +304,7 @@
             setTimeout(() => {
                 mp.currentTime = 0;
                 mp.play();
-            }, 75);
+            }, 70);
         }
         // mp.play().then(() => imgFade(drum.img));
         mp.play();
@@ -320,7 +312,7 @@
     }
 
     function resizeDrum() {
-        document.querySelector(".oncss").href = window.innerHeight > 750 ? "./css/style_resize.css" : "./css/style.css";
+        document.querySelector(".oncss").href = window.innerHeight < 750 ? "./css/style_resize.css" : "./css/style.css";
     }
 
     resizeDrum();
