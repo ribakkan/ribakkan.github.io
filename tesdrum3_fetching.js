@@ -312,7 +312,7 @@
             setTimeout(() => {
                 mp.currentTime = 0;
                 mp.play();
-            }, 70);
+            }, 75);
         }
         // mp.play().then(() => imgFade(drum.img));
         mp.play();
