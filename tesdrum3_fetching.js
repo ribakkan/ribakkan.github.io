@@ -58,7 +58,7 @@
     loadingText.textContent = "LOADING FOR AUDIO...";
     loadingText.style = "padding: 5px; font-size: 2em; text-shadow:rgb(255 0 0) 1px 1px 5px;; color: #fff;";
 
-    let anim = loadingbox.animate([{ transform: `scale(1.2)` }], { duration: 1000, iterations: Infinity });
+    let anim = loadingbox.animate([{ transform: `scale(1.2)` }, { transform: `scale(1)` }], { duration: 1000, iterations: Infinity });
 
     loadingbox.appendChild(loadingText);
     doc.body.appendChild(loadingbox);
