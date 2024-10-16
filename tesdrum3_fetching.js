@@ -208,7 +208,7 @@
             img: '.crash3',
             type: 'crash',
             vol: 0.4,
-            rate: 0.5,
+            rate: 0.8,
             name: 'ride.mp3'
         },
         l: {
