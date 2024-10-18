@@ -292,7 +292,6 @@
 
     function playDrum(e) {
         if (e.repeat) return;
-        e.preventDefault()
         let drum = drumset[e.key.toLowerCase()];
         if (!drum) return;
         
