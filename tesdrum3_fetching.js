@@ -328,8 +328,9 @@
                 if (el(set_mp.img) == this) tmp = set_mp;
             });
             let mp = makeAudio(tmp.name);
-            mp.play();
             imgFade(tmp.img);
+            mp.play();
+            
         });
     });
 
