@@ -291,14 +291,17 @@
     wd.addEventListener("keydown", playDrum);
 
     function playDrum(e) {
-        e.preventDefault()
         if (e.repeat) return;
+        e.preventDefault()
         let drum = drumset[e.key.toLowerCase()];
         if (!drum) return;
+        
         let mp = makeAudio(drum["name"]);
         mp.volume = drum.vol;
         mp.playbackRate = drum.rate || 1;
+        
         if (drum.semiopen) setTimeout(() => (mp.volume = 0), drum.semiopen);
+        
         if (drum.triplet) {
             setTimeout(() => {
                 mp.currentTime = 0;
