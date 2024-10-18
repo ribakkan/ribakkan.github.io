@@ -279,7 +279,7 @@
                 }
             ],
             {
-                duration: 150
+                duration: 130
             }
         );
     }
@@ -291,12 +291,11 @@
     wd.addEventListener("keydown", playDrum);
 
     function playDrum(e) {
+        e.preventDefault()
         if (e.repeat) return;
         let drum = drumset[e.key.toLowerCase()];
         if (!drum) return;
-        // if (typeof(drum) == 'undefined' || e.altKey) return;
         let mp = makeAudio(drum["name"]);
-        // mp.onended = async() => await mp.remove();
         mp.volume = drum.vol;
         mp.playbackRate = drum.rate || 1;
         if (drum.semiopen) setTimeout(() => (mp.volume = 0), drum.semiopen);
