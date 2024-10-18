@@ -279,15 +279,11 @@
                 }
             ],
             {
-                duration: 130
+                duration: 120
             }
         );
     }
-
-    //wd.addEventListener("keydown", async function(e) {
-    //    await playDrum(e);
-    //});
-
+    
     wd.addEventListener("keydown", playDrum);
 
     function playDrum(e) {
