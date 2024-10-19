@@ -13,7 +13,7 @@
     wd.el = doc["querySelector"]["bind"](doc);
 
     let mpBlob = {
-        "bass.mp3": "",
+        "bass2.mp3": "",
         "hh-close.mp3": "",
         "hh-open.mp3": "",
         "splash2.mp3": "",
@@ -66,7 +66,7 @@
     wd.addEventListener("load", async function () {
         const listName = Object.keys(mpBlob);
         // let blobUrls = await Promise.all( listName.map(name => set_audio_url_blob(name)) )
-        let blobUrls = await Promise.all(listName.map((key) => set_audio_base64(key))).catch((error) => {
+        let blobUrls = await Promise.all( listName.map((key) => set_audio_base64(key)) ).catch((error) => {
             console.error("ERROR GET AUDIO BLOB URL!");
             console.error(error);
         });
