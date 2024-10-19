@@ -93,13 +93,13 @@
             img: ".kick1",
             type: "drum",
             vol: 1,
-            name: "bass.mp3"
+            name: "bass2.mp3"
         },
         b: {
             img: ".kick2",
             type: "drum",
             vol: 1,
-            name: "bass.mp3"
+            name: "bass2.mp3"
         },
         a: {
             img: ".hh-close",
