@@ -104,19 +104,19 @@
         a: {
             img: ".hh-close",
             type: "crash",
-            vol: 0.25,
+            vol: 0.280,
             name: "hh-close.mp3"
         },
         h: {
             img: ".hh-close",
             type: "crash",
-            vol: 0.25,
+            vol: 0.280,
             name: "hh-close.mp3"
         },
         k: {
             img: ".hh-close-right",
             type: "crash",
-            vol: 0.25,
+            vol: 0.280,
             name: "hh-close.mp3"
         },
         // short semi open
@@ -178,13 +178,13 @@
         d: {
             img: ".k-snare",
             type: "drum",
-            vol: 0.8,
+            vol: 0.9,
             name: "snare4.mp3"
         },
         g: {
             img: ".k-snare",
             type: "drum",
-            vol: 0.8,
+            vol: 0.9,
             name: "snare4.mp3"
         },
         i: {
@@ -216,7 +216,7 @@
         l: {
             img: ".crash3",
             type: "crash",
-            vol: 0.25,
+            vol: 0.280,
             name: "crispride.mp3"
         },
         w: {
@@ -247,14 +247,14 @@
         r: {
             img: ".tom3",
             type: "drum",
-            vol: 1,
+            vol: 0.9,
             rate: 1,
             name: "tom3.mp3"
         },
         u: {
             img: ".tom3",
             type: "drum",
-            vol: 1,
+            vol: 0.9,
             rate: 1,
             name: "tom3.mp3"
         }
