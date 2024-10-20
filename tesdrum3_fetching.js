@@ -81,7 +81,7 @@
 
     function makeAudio(name) {
         let mp = new wd.Audio(mpBlob[name]);
-        mp.onended = () => mp.remove();
+        // mp.onended = () => mp.remove();
         // mp["preload"] = "auto";
         mp["currentTime"] = 0;
         return mp;
@@ -261,34 +261,25 @@
     };
 
     function imgFade(img) {
-        // img = el(img);
-        // img['style'] = '-webkit-transform:scale(0.96);transform:scale(0.96);box-shadow:0px 2px 9px #1C1C1C;border:1mm ridge rgb(0 200 255 / .4);';
-        // setTimeout(() => img['style'] = '-webkit-transform:scale(1);transform:scale(1);box-shadow:none;', 50);
         const imgElement = el(img);
         imgElement.animate(
             [
-                {
-                    transform: "scale(0.90)",
-                    boxShadow: "0px 0px 8px 4px inset #1C1C1C",
-                    filter: "drop-shadow(0 0 1rem rgba(0, 200, 255))"
-                },
-                {
-                    transform: "scale(1)",
-                    boxShadow: "unset",
-                    filter: "unset"
-                }
+                {transform: "scale(0.90)", boxShadow: "0px 0px 8px 4px inset #1C1C1C", filter: "drop-shadow(0 0 1rem rgba(0, 200, 255))"},
+                {transform: "scale(1)", boxShadow: "unset", filter: "unset"}
             ],
-            {
-                duration: 120
-            }
+            { duration: 120 }
         );
     }
     
     wd.addEventListener("keydown", playDrum);
 
     function playDrum(e) {
-        if (e.repeat) return;
-        let drum = drumset[e.key.toLowerCase()];
+        if (e.repeat) {
+            e.preventDefault();
+            return;
+        }
+        const key = e.key.toLowerCase();
+        let drum = drumset[key];
         if (!drum) return;
         
         let mp = makeAudio(drum["name"]);
@@ -303,13 +294,13 @@
                 mp.play();
             }, 70);
         }
-        // mp.play().then(() => imgFade(drum.img));
+        
         mp.play();
         imgFade(drum.img);
     }
 
     function resizeDrum() {
-        document.querySelector(".oncss").href = window.innerHeight > 750 ? "./css/style_resize.css" : "./css/style.css";
+        el(".oncss").href = window.innerHeight > 750 ? "./css/style_resize.css" : "./css/style.css";
     }
 
     resizeDrum();
