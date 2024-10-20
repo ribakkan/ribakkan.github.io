@@ -83,7 +83,7 @@
         let mp = new wd.Audio(mpBlob[name]);
         // mp.onended = () => mp.remove();
         // mp["preload"] = "auto";
-        mp["currentTime"] = 0;
+        mp.currentTime = 0;
         return mp;
     }
 
@@ -178,13 +178,13 @@
         d: {
             img: ".k-snare",
             type: "drum",
-            vol: 0.9,
+            vol: 1,
             name: "snare4.mp3"
         },
         g: {
             img: ".k-snare",
             type: "drum",
-            vol: 0.9,
+            vol: 1,
             name: "snare4.mp3"
         },
         i: {
@@ -202,21 +202,21 @@
         p: {
             img: ".crash3",
             type: "crash",
-            vol: 0.4,
+            vol: 0.450,
             rate: 1,
             name: "ride.mp3"
         },
         q: {
             img: ".crash3",
             type: "crash",
-            vol: 0.4,
-            rate: 0.8,
+            vol: 0.450,
+            rate: 1,
             name: "ride.mp3"
         },
         l: {
             img: ".crash3",
             type: "crash",
-            vol: 0.280,
+            vol: 0.3,
             name: "crispride.mp3"
         },
         w: {
@@ -247,14 +247,14 @@
         r: {
             img: ".tom3",
             type: "drum",
-            vol: 0.9,
+            vol: 1,
             rate: 1,
             name: "tom3.mp3"
         },
         u: {
             img: ".tom3",
             type: "drum",
-            vol: 0.9,
+            vol: 1,
             rate: 1,
             name: "tom3.mp3"
         }
@@ -264,7 +264,7 @@
         const imgElement = el(img);
         imgElement.animate(
             [
-                {transform: "scale(0.90)", boxShadow: "0px 0px 8px 4px inset #1C1C1C", filter: "drop-shadow(0 0 1rem rgba(0, 200, 255))"},
+                {transform: "scale(0.93)", boxShadow: "0px 0px 8px 4px inset #1C1C1C", filter: "drop-shadow(0 0 1rem rgba(0, 200, 255))"},
                 {transform: "scale(1)", boxShadow: "unset", filter: "unset"}
             ],
             { duration: 120 }
