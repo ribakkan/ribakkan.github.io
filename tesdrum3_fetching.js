@@ -23,7 +23,6 @@
         "crash1.mp3": "",
         "crash2.mp3": "",
         "ride.mp3": "",
-        "cymbal-ride-fienup2.mp3": "",
         "crispride.mp3": "",
         "tom1.mp3": "",
         "tom2.mp3": "",
