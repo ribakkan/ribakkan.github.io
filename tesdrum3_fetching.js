@@ -171,7 +171,7 @@
         c: {
             img: ".k-snare",
             type: "drum",
-            vol: 0.4,
+            vol: 0.3,
             name: "rim2.mp3"
         },
         d: {
@@ -263,7 +263,7 @@
         const imgElement = el(img);
         imgElement.animate(
             [
-                {transform: "scale(0.93)", boxShadow: "0px 0px 8px 4px inset #1C1C1C", filter: "drop-shadow(0 0 1rem rgba(0, 200, 255))"},
+                {transform: "scale(0.93)", boxShadow: "0px 0px 8px 4px inset #1C1C1C", filter: "drop-shadow(0 0 1rem rgba(0, 210, 260))"},
                 {transform: "scale(1)", boxShadow: "unset", filter: "unset"}
             ],
             { duration: 120 }
