@@ -300,33 +300,32 @@
 
     function resizeDrum() {
         el(".oncss").href = window.innerHeight > 750 ? "./css/style_resize.css" : "./css/style.css";
-        if(navigator.userAgent.includes('Mobile')) {
-            Object.entries(drumset).forEach((ds) => {
-                let drumList = ds[1];
-                let img = el(drumList.img);
-                if(img.draggable) {
-                    img.draggable = false;
-                    img.addEventListener('touchstart', function(im) {
-                        let drum = makeAudio(drumList.name)
-                        drum.play()
-                        imgFade(drumList.img);
-                    })
-                }
-            })
-        }else{
-           Object.entries(drumset).forEach((ds) => {
-                let drumList = ds[1];
-                let img = el(drumList.img);
-                if(img.draggable) {
-                    img.draggable = false;
-                    img.addEventListener('mousedown', function(im) {
-                        let drum = makeAudio(drumList.name)
-                        drum.play()
-                        imgFade(drumList.img);
-                    })
-                }
-            })
-        }
+        
+        let playEventType = navigator.userAgent.includes('Mobile') ? 'touchstart': 'mousedown'
+        Object.entries(drumset).forEach((ds) => {
+            let drumList = ds[1];
+            let img = el(drumList.img);
+            if(img.draggable) {
+                img.draggable = false;
+                img.addEventListener(playEventType, function(im) {
+                    let drum = makeAudio(drumList.name)
+                    drum.play()
+                    imgFade(drumList.img);
+                })
+            }
+        })
+        // Object.entries(drumset).forEach((ds) => {
+        //     let drumList = ds[1];
+        //     let img = el(drumList.img);
+        //     if(img.draggable) {
+        //         img.draggable = false;
+        //         img.addEventListener('touchstart', function(im) {
+        //             let drum = makeAudio(drumList.name)
+        //             drum.play()
+        //             imgFade(drumList.img);
+        //         })
+        //     }
+        // })
     }
 
     resizeDrum();
