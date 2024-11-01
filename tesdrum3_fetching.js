@@ -308,6 +308,7 @@
 
     ell("#drum-ring").forEach((img) => {
         img.addEventListener("mousedown", async function (im) {
+            im.preventDefault();
             im.stopPropagation();
             let tmp;
             Object.entries(drumset).forEach((ds) => {
