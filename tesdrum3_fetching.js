@@ -302,6 +302,7 @@
         el(".oncss").href = window.innerHeight > 750 ? "./css/style_resize.css" : "./css/style.css";
         if(navigator.userAgent.includes('Mobile')) {
             ell("#drum-ring").forEach((img) => {
+                img.draggable = false;
                 img.addEventListener('touchstart', function(im) {
                     im.stopPropagation();
                     let tmp;
