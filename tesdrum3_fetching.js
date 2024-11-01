@@ -300,27 +300,57 @@
 
     function resizeDrum() {
         el(".oncss").href = window.innerHeight > 750 ? "./css/style_resize.css" : "./css/style.css";
+        if(navigator.userAgent.includes('Mobile')) {
+            ell("#drum-ring").forEach((img) => {
+                img.addEventListener('touchstart', function(im) {
+                    im.stopPropagation();
+                    let tmp;
+                    Object.entries(drumset).forEach((ds) => {
+                        let set_mp = drumset[ds[0]];
+                        if (el(set_mp.img) == this) tmp = set_mp;
+                    });
+                    let mp = makeAudio(tmp.name);
+                    imgFade(tmp.img);
+                    mp.play();
+                    
+                })
+            });
+        }else{
+            ell("#drum-ring").forEach((img) => {
+                img.addEventListener("mousedown", function (im) {
+                    im.preventDefault();
+                    im.stopPropagation();
+                    let tmp;
+                    Object.entries(drumset).forEach((ds) => {
+                        let set_mp = drumset[ds[0]];
+                        if (el(set_mp.img) == this) tmp = set_mp;
+                    });
+                    let mp = makeAudio(tmp.name);
+                    imgFade(tmp.img);
+                    mp.play();
+                });
+            });
+        }
     }
 
     resizeDrum();
 
     document.body.onresize = resizeDrum;
 
-    ell("#drum-ring").forEach((img) => {
-        img.addEventListener("mousedown", async function (im) {
-            im.preventDefault();
-            im.stopPropagation();
-            let tmp;
-            Object.entries(drumset).forEach((ds) => {
-                let set_mp = drumset[ds[0]];
-                if (el(set_mp.img) == this) tmp = set_mp;
-            });
-            let mp = makeAudio(tmp.name);
-            imgFade(tmp.img);
-            mp.play();
-            
-        });
-    });
+    // ell("#drum-ring").forEach((img) => {
+    //     img.addEventListener("mousedown", async function (im) {
+    //         im.preventDefault();
+    //         im.stopPropagation();
+    //         let tmp;
+    //         Object.entries(drumset).forEach((ds) => {
+    //             let set_mp = drumset[ds[0]];
+    //             if (el(set_mp.img) == this) tmp = set_mp;
+    //         });
+    //         let mp = makeAudio(tmp.name);
+    //         imgFade(tmp.img);
+    //         mp.play();
+    //     });
+    // });
 
     el(".mp3-file").onclick = function () {
         this.lastElementChild.click();
