@@ -307,7 +307,7 @@
     document.body.onresize = resizeDrum;
 
     ell("#drum-ring").forEach((img) => {
-        img.addEventListener("click", async function (im) {
+        img.addEventListener("mousedown", async function (im) {
             im.stopPropagation();
             let tmp;
             Object.entries(drumset).forEach((ds) => {
